@@ -1,0 +1,16 @@
+{
+  "name": "yogaposes",
+  "version": "1.0.0",
+  "description": "simple yoga poses app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "author": "Jill Martin",
+  "license": "ISC"
+}
