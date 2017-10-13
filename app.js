@@ -6,6 +6,8 @@ var mongoose = require("mongoose");
 app.use(bodyParser.json({type:"application/json"}));
 app.use(bodyParser.urlencoded({extended:true}));
 
+var port = process.env.PORT || 3000;
+
 Yogaposes = require('./models/yogaposes');
 
 //conect to mongoose
@@ -73,5 +75,5 @@ app.delete('/api/yogaposes/:_id', function(req, res){
   });
 });
 
-app.listen(3000);
+app.listen(port);
 console.log("Running on port 3000...");
