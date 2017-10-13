@@ -3,19 +3,20 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({type:"application/json"}));
+app.use(bodyParser.urlencoded({extended:true}));
 
 Yogaposes = require('./models/yogaposes');
 
 //conect to mongoose
-mongoose.connect('mongodb://localhost/yogaposes');
+mongoose.connect('mongodb://jill:jill13@ds117615.mlab.com:17615/yogaposes');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
   res.send('Please use /api/yogaposes');
 });
 
-
+//Add some of the yogaposes.js mongoose calls here
 //Get all yogaposes
 app.get('/api/yogaposes', function(req, res){
   Yogaposes.getYogaposes(function(err, yogaposes){
@@ -37,25 +38,27 @@ app.get('/api/yogaposes/:_id', function(req, res){
 });
 
 //Added new yoga pose - Fish Pose, must add data in Postman
-app.post('/api/yogaposes', function(req, res){
+app.post('/api/yogaposes', function(req, res, next){
   var yogapose = req.body;
   Yogaposes.addYogapose(yogapose, function(err, yogapose){
     if(err){
-      throw err;
+      next(err);
+    } else {
+      res.json(yogapose);
     }
-    res.json(yogapose);
   });
 });
 
 //Update one yogapose
-app.put('/api/yogaposes/:_id', function(req, res){
+app.put('/api/yogaposes/:_id', function(req, res, next){
   var id = req.params._id;
   var yogapose = req.body;
-  Yogaposes.updateYogapose(id, yogapose, {}, function(err, yogapose){
+  Yogaposes.updateYogapose(id, yogapose, {returnNewDocument: true}, function(err, yogapose){
     if(err){
-      throw err;
+      next(err);
+    } else {
+      res.json(yogapose);
     }
-    res.json(yogapose);
   });
 });
 
@@ -69,7 +72,6 @@ app.delete('/api/yogaposes/:_id', function(req, res){
     res.json(yogapose);
   });
 });
-
 
 app.listen(3000);
 console.log("Running on port 3000...");

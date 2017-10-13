@@ -6,7 +6,9 @@ var yogaposesSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  create_date: {
+    benefits: String,
+    sanskritName: String,
+    create_date: {
     type: Date,
     default: Date.now
   }
@@ -32,13 +34,7 @@ module.exports.addYogapose = function(yogapose, callback){
 // Update yogapose 
 module.exports.updateYogapose = function(id, yogapose, options, callback){
   var query = {_id: id};
-  //not sure about all of the key values below
-  var update = {
-    name: yogapose.name,
-    sanskritName: yogapose.sanskritName,
-    benefit: yogapose.benefit
-  }
-  Yogaposes.findOneAndUpdate(query, update, options, callback);
+  Yogaposes.findOneAndUpdate(query, yogapose, options, callback);
 }
 
 //Delete yoga pose
