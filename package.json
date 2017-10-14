@@ -4,14 +4,18 @@
   "description": "simple yoga poses app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
   },
   "dependencies": {
-    "express": "*",
     "body-parser": "*",
-    "mongoose": "*"
+    "express": "*",
+    "mongoose": "*",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
-  "author": "Jill Martin",
-  "license": "ISC"
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
 }

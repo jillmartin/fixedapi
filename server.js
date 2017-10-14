@@ -2,7 +2,9 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var babel = require("babel");
 
+app.use(express.static('public'));
 app.use(bodyParser.json({type:"application/json"}));
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -23,9 +25,10 @@ app.get('/', function(req, res){
 app.get('/api/yogaposes', function(req, res){
   Yogaposes.getYogaposes(function(err, yogaposes){
     if(err){
-      throw err;
-    }
+      next(err);
+    } else {
     res.json(yogaposes);
+    }
   });
 });
 
@@ -33,9 +36,10 @@ app.get('/api/yogaposes', function(req, res){
 app.get('/api/yogaposes/:_id', function(req, res){
   Yogaposes.getYogaposeById(req.params._id, function(err, yogapose){
     if(err){
-      throw err;
-    }
+      next(err);
+    } else {
     res.json(yogapose);
+    }
   });
 });
 
@@ -69,9 +73,10 @@ app.delete('/api/yogaposes/:_id', function(req, res){
   var id = req.params._id;
   Yogaposes.removeYogapose(id, function(err, yogapose){
     if(err){
-      throw err;
-    }
+      next(err);
+    } else {
     res.json(yogapose);
+    }
   });
 });
 
