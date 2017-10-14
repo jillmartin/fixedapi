@@ -1,24 +1,40 @@
+// Import JS libraries installed with npm
 var express = require("express");
-var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var babel = require("babel");
+var react = require("react");
 
-app.use(express.static('public'));
+// Initialize express web server
+var app = express();
+
+// Sets up port for express web server
+var port = process.env.PORT || 3000;
+
+// Imports the mongoose schema
+Yogaposes = require('./models/yogaposes');
+
+// Configures express server with body parser library
 app.use(bodyParser.json({type:"application/json"}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-var port = process.env.PORT || 3000;
+// Serve up on ./public folder
+app.use(express.static('public'));
 
-Yogaposes = require('./models/yogaposes');
+// Connect to MLab MongoDB via mongoose
+var promise = mongoose.connect('mongodb://jillidi:jillidi13@ds117615.mlab.com:17615/yogaposes', {
+  useMongoClient: true, 
+  // Added var promise, line 25 per Georg's example
+});
 
-//conect to mongoose
-mongoose.connect('mongodb://jill:jill13@ds117615.mlab.com:17615/yogaposes');
-var db = mongoose.connection;
+// Is this doing anything? 
+//var db = mongoose.connection;
 
 app.get('/', function(req, res){
   res.send('Please use /api/yogaposes');
 });
+
+// API Calls
 
 //Add some of the yogaposes.js mongoose calls here
 //Get all yogaposes

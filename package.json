@@ -9,13 +9,16 @@
     "build": "babel src -d lib"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "*",
     "express": "*",
+    "mongodb": "^2.2.33",
     "mongoose": "*",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0"
   }
 }
