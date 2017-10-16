@@ -2,23 +2,17 @@
   "name": "yogaposes",
   "version": "1.0.0",
   "description": "simple yoga poses app",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "body-parser": "*",
-    "express": "*",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
     "mongodb": "^2.2.33",
-    "mongoose": "*",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.0"
+    "mongoose": "^4.10.8",
+    "react": "^16.0.0"
   }
 }

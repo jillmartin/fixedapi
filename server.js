@@ -2,15 +2,15 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var babel = require("babel");
+//var babel = require("babel");
 var react = require("react");
 
 // Initialize express web server
 var app = express();
 
 // Sets up port for express web server
-var port = process.env.PORT || 3000;
-
+var port = 3000;//process.env.PORT || 3000; // process.env.PORT used to determine right port for Heroku deployment
+app.set('port', port);
 // Imports the mongoose schema
 Yogaposes = require('./models/yogaposes');
 
@@ -22,10 +22,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 // Connect to MLab MongoDB via mongoose
-var promise = mongoose.connect('mongodb://jillidi:jillidi13@ds117615.mlab.com:17615/yogaposes', {
+var promise = mongoose.connect('mongodb://admin:admin@ds121225.mlab.com:21225/yogaposes', {
   useMongoClient: true, 
   // Added var promise, line 25 per Georg's example
 });
+//mongodb://jillidi:jillidi13@ds117615.mlab.com:17615/yogaposes
+//console.log(promise);
 
 // Is this doing anything? 
 //var db = mongoose.connection;
@@ -96,5 +98,7 @@ app.delete('/api/yogaposes/:_id', function(req, res){
   });
 });
 
-app.listen(port);
-console.log("Running on port 3000...");
+// Start express web server on port 3000
+app.listen(app.get('port'), function() {
+  console.log('Web Server started on port ' + app.get('port'));
+});

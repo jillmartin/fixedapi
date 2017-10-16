@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 //yogapose schema
-var yogaposesSchema = mongoose.Schema({
+var yogaposesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
