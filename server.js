@@ -24,10 +24,8 @@ app.use(express.static('public'));
 // Connect to MLab MongoDB via mongoose
 var promise = mongoose.connect('mongodb://admin:admin@ds121225.mlab.com:21225/yogaposes', {
   useMongoClient: true, 
-  // Added var promise, line 25 per Georg's example
 });
-//mongodb://jillidi:jillidi13@ds117615.mlab.com:17615/yogaposes
-//console.log(promise);
+
 
 // Is this doing anything? 
 //var db = mongoose.connection;
