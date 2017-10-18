@@ -15,7 +15,7 @@ class YogaPosesList extends React.Component {
         ]
       };
     }
-  //react function/api/yogaposes
+  //react function/api/yogas
   componentWillMount() {
     axios.get("/api/yogaposes")
       .then((response) => {
