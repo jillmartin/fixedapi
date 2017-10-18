@@ -6,6 +6,7 @@ class YogaPosesList extends React.Component {
       super(props);
       this.state = {
         poses: [
+          //adding this for fun
         //   {
         //   name: "Bear"
         // },
