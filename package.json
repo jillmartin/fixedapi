@@ -2,7 +2,7 @@
   "name": "yogaposes",
   "version": "1.0.0",
   "description": "simple yoga poses app",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,8 +15,15 @@
     "mongoose": "^4.10.8",
     "react": "^16.0.0"
   },
-    "engines": {
-      "node":"8.2.x",
-      "npm": "5.3.0"
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "presets": [
+      "env"
+    ]
+  },
+  "engines": {
+    "node": "8.2.x",
+    "npm": "5.3.0"
   }
 }
