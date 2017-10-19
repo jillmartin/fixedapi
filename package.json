@@ -2,7 +2,7 @@
   "name": "yogaposes",
   "version": "1.0.0",
   "description": "simple yoga poses app",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
